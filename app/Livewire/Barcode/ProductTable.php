@@ -35,7 +35,7 @@ class ProductTable extends Component
             return session()->flash('message', 'Max quantity is 100 per barcode generation!');
         }
 
-        if (!is_numeric($product->product_code)) {
+        if (!is_string($product->product_code)) {
             return session()->flash('message', 'Can not generate Barcode with this type of Product Code');
         }
 
@@ -52,6 +52,7 @@ class ProductTable extends Component
             'barcodes' => $this->barcodes,
             'price' => $this->product->product_price,
             'name' => $this->product->product_name,
+            'product_code' => $this->product->product_code,
         ]);
         return $pdf->stream('barcodes-'. $this->product->product_code .'.pdf');
     }

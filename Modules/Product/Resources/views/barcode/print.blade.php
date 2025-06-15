@@ -12,15 +12,19 @@
 <div class="container">
     <div class="row">
         @foreach($barcodes as $barcode)
-            <div class="col-xs-3" style="border: 1px solid #dddddd;border-style: dashed;">
-                <p style="font-size: 15px;color: #000;margin-top: 15px;margin-bottom: 5px;">
+            <div class="col-xs-4" style="border: 2px solid #dddddd;border-style: dashed;">
+                <p style="font-size: 15px;color: #000;margin-top: 15px;margin-bottom: 5px; text-align: center;">
                     {{ $name }}
+                    <p class="text-center">
+                    {{ $product_code}} 
+                    {{ date('Y-m-d H:i') }}
+                    </p>
                 </p>
-                <div>
+                <div class="text-center">
                     {!! $barcode !!}
                 </div>
-                <p style="font-size: 15px;color: #000;font-weight: bold;">
-                    Price:: {{ format_currency($price) }}</p>
+                <p style="font-size: 15px;color: #000;font-weight: bold; text-align: center;">
+                    Price: {{ format_currency($price) }}</p>
             </div>
         @endforeach
     </div>

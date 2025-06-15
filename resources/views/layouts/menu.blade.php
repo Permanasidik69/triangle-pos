@@ -1,38 +1,39 @@
 <li class="c-sidebar-nav-item {{ request()->routeIs('home') ? 'c-active' : '' }}">
     <a class="c-sidebar-nav-link" href="{{ route('home') }}">
-        <i class="c-sidebar-nav-icon bi bi-house" style="line-height: 1;"></i> Home
+        <i class="c-sidebar-nav-icon bi bi-house" style="line-height: 1;"></i> Dashboard
     </a>
 </li>
+
 
 @can('access_products')
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('products.*') || request()->routeIs('product-categories.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Barang
+        <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Items
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         @can('access_product_categories')
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link {{ request()->routeIs('product-categories.*') ? 'c-active' : '' }}" href="{{ route('product-categories.index') }}">
-                <i class="c-sidebar-nav-icon bi bi-collection" style="line-height: 1;"></i> Kategori Barang
+                <i class="c-sidebar-nav-icon bi bi-collection" style="line-height: 1;"></i> Item Category
             </a>
         </li>
         @endcan
-        @can('create_products')
+       <!--  @can('create_products')
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link {{ request()->routeIs('products.create') ? 'c-active' : '' }}" href="{{ route('products.create') }}">
                 <i class="c-sidebar-nav-icon bi bi-bag-plus" style="line-height: 1;"></i> Tambah Produk
             </a>
         </li>
-        @endcan
+        @endcan -->
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link {{ request()->routeIs('products.index') ? 'c-active' : '' }}" href="{{ route('products.index') }}">
-                <i class="c-sidebar-nav-icon bi bi-table" style="line-height: 1;"></i> Daftar Barang
+                <i class="c-sidebar-nav-icon bi bi-table" style="line-height: 1;"></i> List Item
             </a>
         </li>
         @can('print_barcodes')
            <li class="c-sidebar-nav-item">
                <a class="c-sidebar-nav-link {{ request()->routeIs('barcode.print') ? 'c-active' : '' }}" href="{{ route('barcode.print') }}">
-                   <i class="c-sidebar-nav-icon bi bi-printer" style="line-height: 1;"></i> Barcode Barang
+                   <i class="c-sidebar-nav-icon bi bi-printer" style="line-height: 1;"></i> Barcode Item
                </a>
            </li>
         @endcan
@@ -62,7 +63,7 @@
     </li>
 @endcan
 
-@can('access_quotations')
+<!-- @can('access_quotations')
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('quotations.*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
             <i class="c-sidebar-nav-icon bi bi-cart-check" style="line-height: 1;"></i> Quotations
@@ -82,7 +83,7 @@
             </li>
         </ul>
     </li>
-@endcan
+@endcan -->
 
 @can('access_purchases')
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('purchases.*') || request()->routeIs('purchase-payments*') ? 'c-show' : '' }}">
@@ -209,7 +210,7 @@
     </li>
 @endcan
 
-@can('access_customers|access_suppliers')
+@can('access_customers')
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('customers.*') || request()->routeIs('suppliers.*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
             <i class="c-sidebar-nav-icon bi bi-people" style="line-height: 1;"></i> Parties
@@ -298,7 +299,7 @@
     </li>
 @endcan
 
-@can('access_currencies|access_settings')
+@can('access_settings')
     <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('currencies*') || request()->routeIs('units*') ? 'c-show' : '' }}">
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
             <i class="c-sidebar-nav-icon bi bi-gear" style="line-height: 1;"></i> Settings
