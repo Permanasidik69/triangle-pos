@@ -54,13 +54,13 @@ class AdjustmentsDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('adjusted_products_count')
-                ->title('Total Products')
+                ->title('Products')
                 ->className('text-center align-middle'),
 
             Column::make('note')
                 ->title('Note')
                 ->className('text-justify align-middle'),
-                
+
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

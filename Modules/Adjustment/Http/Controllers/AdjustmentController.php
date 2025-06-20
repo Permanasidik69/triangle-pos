@@ -44,7 +44,7 @@ class AdjustmentController extends Controller
         DB::transaction(function () use ($request) {
             $adjustment = Adjustment::create([
                 'date' => $request->date,
-                'note' => $request->note,
+                'note' => $request->note
             ]);
 
             foreach ($request->product_ids as $key => $id) {
