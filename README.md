@@ -1,7 +1,7 @@
 <picture>
-    <source srcset="public/images/logo.png"  
+    <source srcset="public/images/JudulDark.png"  
             media="(prefers-color-scheme: dark)">
-    <img src="public/images/logo-dark.png" alt="App Logo">
+    <img src="public/images/JudulDark.png" alt="App Logo">
 </picture>
 
 > **Important Note:** This Project is ready for Production. But use code from main branch only. If you find any bug or have any suggestion please create an Issue.
@@ -23,7 +23,7 @@
 > **Important Note:** "Point Of Sales Visval Store" uses Laravel Snappy Package for PDFs. If you are using Linux then no configuration is needed. But in other Operating Systems please refer to [Laravel Snappy Documentation](https://github.com/barryvdh/laravel-snappy).
 
 # Admin Credentials
-> Email: super.admin@test.com || Password: 12345678
+> Email: visvalstore@gmail.com || Password: 12345678
 
 ## Demo
 ![Point Of Sales Visval Store](public/images/Dashboard.png)
