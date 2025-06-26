@@ -7,7 +7,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/POS-LOGO.png') }}">
+    <link rel="icon" href="{{ asset('images/Vpos_Light.png') }}">
 
     @include('includes.main-css')
 </head>

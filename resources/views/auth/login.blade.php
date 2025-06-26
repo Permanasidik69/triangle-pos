@@ -8,20 +8,16 @@
     <title>Login | {{ config('app.name') }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/POS-LOGO.png') }}">
+     <link rel="icon" href="{{ asset('images/Vpos_Light.png') }}">
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
-<body class="c-app flex-row align-items-center">
+<body class="c-app flex-row align-items-center" style="background-image: url('{{ asset('images/J.png')}}'); background-size: cover;">
 <div class="container">
-    <div class="row mb-3">
-        <div class="col-12 d-flex justify-content-center">
-            <img width="350" src="{{ asset('images/Judul-Dark.png') }}" alt="Logo">
-        </div>
-    </div>
+    
     <div class="row justify-content-center">
         <div class="col-md-5">
             @if(Session::has('account_deactivated'))
@@ -31,10 +27,13 @@
             @endif
             <div class="card p-4 border-0 shadow-sm">
                 <div class="card-body">
+                    <div class="col-12 d-flex justify-content-center">
+                        <img width="350" src="{{ asset('images/Vpos_Dark.png') }}" alt="Logo">
+                    </div>
                     <form id="login" method="post" action="{{ url('/login') }}">
                         @csrf
-                        <h1 align="center">Login</h1>
-                        <p class="text-muted">Sign In to your account</p>
+                        
+                        <p class="text-muted text-center">Sign In to your account</p>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                     <span class="input-group-text">
@@ -77,15 +76,16 @@
                                     Forgot password?
                                 </a>
                             </div>
+                            <div class="col-12 mt-3"> 
+                                 <p class="text-center mt-5 lead">
+                                    Developed By
+                                    <a href="https://visval.co.id" class="font-weight-bold text-primary">Visval Official Store</a>
+                                </p>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
-
-            <p class="text-center mt-5 lead">
-                Developed By
-                <a href="https://visval.co.id" class="font-weight-bold text-primary">Visval Official Store</a>
-            </p>
         </div>
     </div>
 </div>
