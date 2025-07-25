@@ -14,10 +14,16 @@ class ProductCategoriesDataTable extends DataTable
 
     public function dataTable($query) {
         return datatables()
-            ->eloquent($query)
+            ->eloquent($query)->with('products')
             ->addColumn('action', function ($data) {
                 return view('product::categories.partials.actions', compact('data'));
-            });
+            })->addColumn('category_code', function ($data) {
+                return $data->category_code;
+            })->addColumn('category_name', function ($data) {
+                return $data->category_name;
+            })->addColumn('products_count', function ($data) {
+                return $data->products_count;
+            })->rawColumns(['category_code']);
     }
 
     public function query(Category $model) {

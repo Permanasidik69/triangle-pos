@@ -74,7 +74,7 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="product_cost">Cost <span class="text-danger">*</span></label>
+                                        <label for="product_cost">HPP <span class="text-danger">*</span></label>
                                         <input id="product_cost" type="text" class="form-control" name="product_cost" required value="{{ old('product_cost') }}">
                                     </div>
                                 </div>
