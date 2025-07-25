@@ -44,18 +44,20 @@ $(document).ready(function () {
         let currentMonthChart = new Chart(overviewChart, {
             type: 'doughnut',
             data: {
-                labels: ['Sales', 'Purchases', 'Expenses'],
+                labels: ['Sales', 'Purchases', 'Expenses', 'Profit'],
                 datasets: [{
-                    data: [response.sales, response.purchases, response.expenses],
+                    data: [response.sales, response.purchases, response.expenses, response.profit],
                     backgroundColor: [
                         '#F59E0B',
                         '#0284C7',
                         '#EF4444',
+                        '#10B981',
                     ],
                     hoverBackgroundColor: [
                         '#F59E0B',
                         '#0284C7',
                         '#EF4444',
+                        '#10B981',
                     ],
                 }]
             },

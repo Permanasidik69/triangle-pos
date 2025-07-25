@@ -23,7 +23,7 @@ class ProductCategoriesDataTable extends DataTable
                 return $data->category_name;
             })->addColumn('products_count', function ($data) {
                 return $data->products_count;
-            })->rawColumns(['category_code']);
+            })->rawColumns(['products']);
     }
 
     public function query(Category $model) {
