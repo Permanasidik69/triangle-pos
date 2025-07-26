@@ -17,13 +17,17 @@ class ProductCategoriesDataTable extends DataTable
             ->eloquent($query)->with('products')
             ->addColumn('action', function ($data) {
                 return view('product::categories.partials.actions', compact('data'));
-            })->addColumn('category_code', function ($data) {
+            })
+            ->addColumn('category_code', function ($data) {
                 return $data->category_code;
-            })->addColumn('category_name', function ($data) {
+            })
+            ->addColumn('category_name', function ($data) {
                 return $data->category_name;
-            })->addColumn('products_count', function ($data) {
-                return $data->products_count;
-            })->rawColumns(['products']);
+            })
+            ->addColumn('products_count', function ($data) {
+                return ($data->products_count);
+            })
+            ->rawColumns(['action']);
     }
 
     public function query(Category $model) {
@@ -34,21 +38,7 @@ class ProductCategoriesDataTable extends DataTable
         return $this->builder()
             ->setTableId('product_categories-table')
             ->columns($this->getColumns())
-            ->minifiedAjax()
-            ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
-                                'tr' .
-                                <'row'<'col-md-5'i><'col-md-7 mt-2'p>>")
-            ->orderBy(4)
-            ->buttons(
-                Button::make('excel')
-                    ->text('<i class="bi bi-file-earmark-excel-fill"></i> Excel'),
-                Button::make('print')
-                    ->text('<i class="bi bi-printer-fill"></i> Print'),
-                Button::make('reset')
-                    ->text('<i class="bi bi-x-circle"></i> Reset'),
-                Button::make('reload')
-                    ->text('<i class="bi bi-arrow-repeat"></i> Reload')
-            );
+            ->minifiedAjax();
     }
 
     protected function getColumns() {

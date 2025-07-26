@@ -12,8 +12,7 @@ use Yajra\DataTables\Services\DataTable;
 class ProductDataTable extends DataTable
 {
 
-    public function dataTable($query)
-    {
+    public function dataTable($query) {
         return datatables()
             ->eloquent($query)->with('category')
             ->addColumn('action', function ($data) {
@@ -28,9 +27,6 @@ class ProductDataTable extends DataTable
             })
             ->addColumn('product_cost', function ($data) {
                 return format_currency($data->product_cost);
-            })
-            ->addColumn('product_quantity', function ($data) {
-                return $data->product_quantity . ' ' . $data->product_unit;
             })
             ->rawColumns(['product_image']);
     }
