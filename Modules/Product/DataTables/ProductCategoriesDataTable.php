@@ -26,11 +26,11 @@ class ProductCategoriesDataTable extends DataTable
             })
             ->addColumn('products_count', function ($data) {
                 return ($data->products_count);
-            })
-            ->rawColumns(['action']);
+            });
     }
 
-    public function query(Category $model) {
+    public function query(Category $model) 
+    {
         return $model->newQuery()->withCount('products');
     }
 

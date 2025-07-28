@@ -14,10 +14,20 @@ class AdjustmentsDataTable extends DataTable
 
     public function dataTable($query) {
         return datatables()
-            ->eloquent($query)
+            ->eloquent($query)->with('adjustedProducts')
             ->addColumn('action', function ($data) {
                 return view('adjustment::partials.actions', compact('data'));
-            });
+            })
+            ->addColumn('reference', function ($data) {
+                return $data->reference;
+            })
+            ->addColumn('adjusted_products_count', function ($data) {
+                return $data->adjusted_products_count;
+            })
+            ->addColumn('note', function ($data) {
+                return $data->note;
+            })
+            ->rawColumns(['action']);
     }
 
     public function query(Adjustment $model) {
@@ -28,21 +38,7 @@ class AdjustmentsDataTable extends DataTable
         return $this->builder()
             ->setTableId('adjustments-table')
             ->columns($this->getColumns())
-            ->minifiedAjax()
-            ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
-                                        'tr' .
-                                        <'row'<'col-md-5'i><'col-md-7 mt-2'p>>")
-            ->orderBy(4)
-            ->buttons(
-                Button::make('excel')
-                    ->text('<i class="bi bi-file-earmark-excel-fill"></i> Excel'),
-                Button::make('print')
-                    ->text('<i class="bi bi-printer-fill"></i> Print'),
-                Button::make('reset')
-                    ->text('<i class="bi bi-x-circle"></i> Reset'),
-                Button::make('reload')
-                    ->text('<i class="bi bi-arrow-repeat"></i> Reload')
-            );
+            ->minifiedAjax();
     }
 
     protected function getColumns() {
