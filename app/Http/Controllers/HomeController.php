@@ -50,7 +50,7 @@ class HomeController extends Controller
         
         abort_if(!request()->ajax(), 404);
         $product_costs = 0;
-        foreach (Sale::completed()->with('saleDetails')->get() as $sale) {
+        foreach (Sale::completed()->with('saleDetails')->whereMonth('date', date('m'))->whereYear('date', date('Y'))->get() as $sale) {
             foreach ($sale->saleDetails as $saleDetail) {
                 if (!is_null($saleDetail->product)) {
                     $product_costs += $saleDetail->product->product_cost * $saleDetail->quantity;
