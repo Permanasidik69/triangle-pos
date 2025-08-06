@@ -27,6 +27,7 @@ class ProfitLossReport extends Component
     public $payments_received_amount;
     public $payments_sent_amount;
     public $payments_net_amount;
+    public $due_amount;
 
     protected $rules = [
         'start_date' => 'required|date|before:end_date',
@@ -47,6 +48,7 @@ class ProfitLossReport extends Component
         $this->payments_received_amount = 0;
         $this->payments_sent_amount = 0;
         $this->payments_net_amount = 0;
+        $this->due_amount = 0;
     }
 
     public function render() {
@@ -68,6 +70,15 @@ class ProfitLossReport extends Component
                 return $query->whereDate('date', '<=', $this->end_date);
             })
             ->count();
+
+        $this->due_amount = Sale::completed()
+            ->when($this->start_date, function ($query) {
+                return $query->whereDate('date', '>=', $this->start_date);
+            })
+            ->when($this->end_date, function ($query) {
+                return $query->whereDate('date', '<=', $this->end_date);
+            })
+            ->sum('due_amount') / 100;
 
         $this->sales_amount = Sale::completed()
             ->when($this->start_date, function ($query) {
@@ -146,7 +157,7 @@ class ProfitLossReport extends Component
 
         $this->payments_sent_amount = $this->calculatePaymentsSent();
 
-        $this->payments_net_amount = $this->payments_received_amount - $this->payments_sent_amount;
+        $this->payments_net_amount = $this->payments_received_amount - $this->payments_sent_amount + $this->due_amount;
     }
 
     public function calculateProfit() {
@@ -160,14 +171,15 @@ class ProfitLossReport extends Component
                 return $query->whereDate('date', '<=', $this->end_date);
             })
             ->with('saleDetails')->get();
+        
 
         foreach ($sales as $sale) {
             foreach ($sale->saleDetails as $saleDetail) {
-                $product_costs += $saleDetail->product->product_cost;
+                $product_costs += $saleDetail->product->product_cost * $saleDetail->quantity;
             }
         }
 
-        $profit = $revenue - $product_costs;
+        $profit = $revenue - $product_costs - $this->purchases_amount - $this->expenses_amount;
 
         return $profit;
     }

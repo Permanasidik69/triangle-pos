@@ -33,7 +33,7 @@ class CustomersDataTable extends DataTable
             ->dom("<'row'<'col-md-3'l><'col-md-5 mb-2'B><'col-md-4'f>> .
                                        'tr' .
                                  <'row'<'col-md-5'i><'col-md-7 mt-2'p>>")
-            ->orderBy(4)
+            ->orderBy(5)
             ->buttons(
                 Button::make('excel')
                     ->text('<i class="bi bi-file-earmark-excel-fill"></i> Excel'),
@@ -55,6 +55,9 @@ class CustomersDataTable extends DataTable
                 ->className('text-center align-middle'),
 
             Column::make('customer_phone')
+                ->className('text-center align-middle'),
+            
+                Column::make('address')
                 ->className('text-center align-middle'),
 
             Column::computed('action')

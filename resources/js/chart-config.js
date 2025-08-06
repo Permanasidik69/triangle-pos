@@ -64,6 +64,26 @@ $(document).ready(function () {
         });
     });
 
+    let applyFilter = function (date) {
+        console.log(date.value);
+        const month = date.value.substring(5, 7);
+        const year = date.value.substring(0, 4);
+        console.log(month);
+
+        const lastDay = (y, m) => {
+            return new Date(y, m, 0).getDate();
+        }
+
+        const startDate = `${date.value}}-01`;
+        const endDate = `${date.value}-${lastDay(year, month)}`;
+
+        currentMonthChart.config.data.labels = ['Sales', 'Purchases', 'Expenses', 'Profit'];
+        $.get(`/current-month/chart-data?start_date=${startDate}&end_date=${endDate}`, function (response) {
+            currentMonthChart.config.data.datasets[0].data = [response.sales, response.purchases, response.expenses, response.profit];
+            currentMonthChart.update();
+        });
+    }
+
     let paymentChart = document.getElementById('paymentChart');
     $.get('/payment-flow/chart-data', function (response) {
         let cashflowChart = new Chart(paymentChart, {

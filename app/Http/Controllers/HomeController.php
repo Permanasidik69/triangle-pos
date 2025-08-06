@@ -67,7 +67,7 @@ class HomeController extends Controller
                 ->whereYear('date', date('Y'))
                 ->sum('amount') / 100;
         $currentMonthProfit = $currentMonthSales - $product_costs - $currentMonthExpenses - $currentMonthPurchases;
-
+        
         return response()->json([
             'sales'     => $currentMonthSales,
             'purchases' => $currentMonthPurchases,

@@ -64,7 +64,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="address">Address <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="address" required>
+                                        <textarea type="text" class="form-control" name="address" required> </textarea>
                                     </div>
                                 </div>
                             </div>

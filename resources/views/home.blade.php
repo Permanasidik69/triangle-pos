@@ -87,7 +87,10 @@
             <div class="col-lg-5">
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-header">
-                        Overview of {{ now()->format('F, Y') }}
+                        Overview of <!-- {{ now()->format('F, Y') }} -->
+                         <input type="month" onchange="applyFilter()"
+                                class="form-control form-control-sm w-auto d-inline-block float-right"
+                                value="{{ now()->format('Y-m') }}">
                     </div>
                     <div class="card-body d-flex justify-content-center">
                         <div class="chart-container" style="position: relative; height:auto; width:280px">

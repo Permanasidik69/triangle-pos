@@ -65,7 +65,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="address">Address <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="address" required value="{{ $supplier->address }}">
+                                        <textarea type="text" class="form-control" name="address" required>{{ $supplier->address }}</textarea>
                                     </div>
                                 </div>
                             </div>
