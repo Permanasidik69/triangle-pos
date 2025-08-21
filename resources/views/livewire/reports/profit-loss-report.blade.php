@@ -117,7 +117,7 @@
                     </div>
                     <div>
                         <div class="text-value text-primary">{{ format_currency($expenses_amount) }}</div>
-                        <div class="text-uppercase font-weight-bold small">Expenses</div>
+                        <div class="text-uppercase font-weight-bold small">Procurement</div>
                     </div>
                 </div>
             </div>

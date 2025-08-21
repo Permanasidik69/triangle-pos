@@ -44,7 +44,7 @@ $(document).ready(function () {
         let currentMonthChart = new Chart(overviewChart, {
             type: 'doughnut',
             data: {
-                labels: ['Sales', 'Purchases', 'Expenses', 'Profit'],
+                labels: ['Sales', 'Purchases', 'Procurement', 'Profit'],
                 datasets: [{
                     data: [response.sales, response.purchases, response.expenses, response.profit],
                     backgroundColor: [

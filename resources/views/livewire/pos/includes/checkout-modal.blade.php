@@ -47,7 +47,9 @@
                                 <select class="form-control" name="payment_method" id="payment_method" required>
                                     <option value="Cash">Cash</option>
                                     <option value="Credit Card">Credit Card</option>
-                                    <option value="Bank Transfer">Bank Transfer</option>
+                                    <option value="Bank Transfer - BCA">Bank Transfer - BCA</option>
+                                    <option value="Bank Transfer - Mandiri">Bank Transfer - Mandiri</option>
+                                    <option value="Bank Transfer - BNI">Bank Transfer - BNI</option>
                                 </select>
                             </div>
                             <div class="form-group">

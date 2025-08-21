@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="notification_email">Notification Email <span class="text-danger">*</span></label>
+                                        <label for="notification_email">Email <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="notification_email" value="{{ $settings->notification_email }}" required>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="company_address">Company Address <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="company_address" value="{{ $settings->company_address }}">
+                                        <textarea class="form-control" name="company_address">{{ $settings->company_address }}</textarea>
                                     </div>
                                 </div>
                             </div>
