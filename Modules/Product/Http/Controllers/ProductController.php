@@ -18,6 +18,8 @@ class ProductController extends Controller
 
     public function index(ProductDataTable $dataTable) {
         abort_if(Gate::denies('access_products'), 403);
+            //$products = Product::get();
+            //dd($products);
 
         return $dataTable->render('product::products.index');
     }

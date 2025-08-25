@@ -47,6 +47,9 @@
                             <div>
                                 Payment Status: <strong>{{ $sale->payment_status }}</strong>
                             </div>
+                            <div>
+                                Payment Method: <strong>{{ $sale->payment_method }}</strong>
+                            </div>
                         </div>
 
                     </div>
@@ -99,6 +102,10 @@
                         <div class="col-xs-4 col-xs-offset-8">
                             <table class="table">
                                 <tbody>
+                                <tr>
+                                    <td class="left"><strong>Total Product</strong></td>
+                                    <td class="right">{{ $sale->saleDetails->sum('quantity') }}pcs</td>
+                                </tr>
                                 <tr>
                                     <td class="left"><strong>Discount ({{ $sale->discount_percentage }}%)</strong></td>
                                     <td class="right">{{ format_currency($sale->discount_amount) }}</td>

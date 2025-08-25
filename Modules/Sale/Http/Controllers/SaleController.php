@@ -110,6 +110,7 @@ class SaleController extends Controller
         abort_if(Gate::denies('show_sales'), 403);
 
         $customer = Customer::findOrFail($sale->customer_id);
+        //$product_count = Product::whereIn('id', $sale->saleDetails->pluck('product_id'))->count();
 
         return view('sale::show', compact('sale', 'customer'));
     }
